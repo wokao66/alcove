@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALCOVE | 一隅</title>
+    
+    <!-- 引入样式表 -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- 引入高级衬线字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=Noto+Serif+SC:wght@200;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 1. 噪点纹理层 -->
+    <div class="noise"></div>
+
+    <!-- 2. 背景音乐播放器 -->
+    <audio id="bgm-player" loop>
+        <source src="music/bgm.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 3. 右上角悬浮音乐开关 -->
+    <div id="music-toggle" onclick="toggleMusic()">
+        <!-- 一个简单的黑胶唱片图标 SVG -->
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 12 L12 2"></path>
+        </svg>
+    </div>
+
+    <!-- 4. 悬浮导航栏 (默认隐藏) -->
+    <nav id="sticky-nav">
+        <div class="nav-logo" onclick="goHome()">ALCOVE. <span style="font-size:0.6em; letter-spacing:2px; opacity:0.5; margin-left:10px;">BACK</span></div>
+        <div class="nav-btn" onclick="scrollToTop()">TOP ↑</div>
+    </nav>
+
+    <!-- 5. 封面区域 (Cover) -->
+    <section id="cover-section">
+        <!-- 静态背景图 -->
+        <div class="hero-grid">
+            <div class="hero-img-box"><img src="images/home/1.jpg" alt="Cover 1"></div>
+            <div class="hero-img-box"><img src="images/home/2.jpg" alt="Cover 2"></div>
+            <div class="hero-img-box"><img src="images/home/3.jpg" alt="Cover 3"></div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- 中心文字内容 -->
+        <div class="center-content">
+            <h1 class="main-title">ALCOVE</h1>
+            
+            <!-- 中文副标题：去掉了斜杠，使用纯留白 -->
+            <div class="main-subtitle-cn">
+                <span>一</span><span>隅</span>
+            </div>
+
+            <p class="quote-text">
+                “ 于世界一隅，安放躁动的灵魂 ”<br>
+                <span class="quote-en">In a quiet corner of the world, I find my sanctuary.</span>
+            </p>
+            
+            <!-- 四大板块入口 -->
+            <div class="entry-buttons">
+                <!-- Pure -> Innocence (纯真) -->
+                <div class="btn-item" onclick="enterGallery('pure')">
+                    <span class="en">Innocence</span>
+                    <span class="cn">纯真</span>
+                </div>
+                <!-- Sexy -> Instinct (本能) -->
+                <div class="btn-item" onclick="enterGallery('sexy')">
+                    <span class="en">Instinct</span>
+                    <span class="cn">本能</span>
+                </div>
+                <!-- Inner -> Intimacy (私语) -->
+                <div class="btn-item" onclick="enterGallery('inner')">
+                    <span class="en">Intimacy</span>
+                    <span class="cn">私语</span>
+                </div>
+                <!-- Maternity -> Bloom (盛开) -->
+                <div class="btn-item" onclick="enterGallery('maternity')">
+                    <span class="en">Bloom</span>
+                    <span class="cn">盛开</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 画廊区域 (Gallery) -->
+    <section id="gallery-section">
+        <div class="gallery-header">
+            <h2 id="gallery-title">Title</h2>
+            <div class="divider-line"></div>
+            <p id="gallery-desc">Description</p>
+        </div>
+        
+        <div class="gallery-container" id="gallery-grid">
+            <!-- JS 填充 -->
+        </div>
+
+        <div class="loading-status" id="loading-text">Loading...</div>
+    </section>
+
+    <!-- 7. 灯箱 -->
+    <div id="lightbox">
+        <div class="lightbox-bg"></div>
+        <img id="lightbox-img" src="" alt="">
+        <div class="close-btn">CLOSE</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
